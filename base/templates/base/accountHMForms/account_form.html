@@ -1,0 +1,297 @@
+{% extends 'Main.html'%}
+
+{% block content %}
+    <div class="info">
+        <h2>HM Plus Add Account</h2>
+        <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+        <form method ="POST" action="" >
+            {% csrf_token %}
+            <h3 style="margin-top:40px">Add Accounts</h3>
+            <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">  
+            <button style = "background-color: rgb(40, 40, 228); border-radius: 20px; margin-left: 900px;"> <a style ="text-decoration: none;color: white;" href="{{request.META.HTTP_REFERER|escape}}"> Back
+            </a></button>
+            <button style = "background-color: rgb(12, 131, 5); border-radius: 20px; margin-left: 0px;"> <a style ="text-decoration: none;color: white;" type = "submit", value ="Submit">Save</a>
+            </button>
+
+
+    <div class = "row nopadding">
+
+        <div class = "col-md-6 "style=" padding: 0">
+            <div class="formSeg">
+                
+                 <h5 style =  "color:black; width:100%;" >Key Information</h5>
+                 <hr style="width: 100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+            <dl>
+                <dt>Account Number</dt>
+                <dd><input style = "width:100%" type = "input" name = "accNumber" placeholder = "Account Number" required></dd>
+                
+                <dt>Product Type</dt>   
+                <dd><select name ="productName" required>
+                    {%for lis in prod%}
+                    <option value = {{lis.productName}}>{{lis.productName}}</option>
+                    {%endfor%}
+
+                </select></dd>
+
+                <dt>Company Name</dt>
+                <dd><select style = "width:100%" name ="companyName" required>
+                    <{%for lis in comp%}
+                    <option value = {{lis.companyName}}>{{lis.companyName}}</option>
+                    {%endfor%}>
+
+                </select></dd>
+                
+                
+                
+                <dt>Account Status</dt>
+                <dd><select>
+                    <option value="Active" selected="accStat">
+                       Active
+                    </option>
+                    <option value="InActive">
+                        In-Active
+                    </option>
+                    <option value="Suspended">
+                        Suspended
+                    </option>
+                    </select></dd>
+
+                <dt>Parent Company</dt>
+                <dd><select style = "width:100%"name="prntCompany" >
+                    {%for lis in prntC%}
+                        <option value={{lis.prntCompany}}>{{lis.prntCompany}}</option> 
+                    {%endfor%}
+                </select></dd>
+                <dt> Roll Up?</dt>
+                <dd><select>
+                    <option value="NA" selected="rollup">
+                       NA
+                    </option>
+                    <option value="Yes">
+                       Yes
+                    </option>
+                    <option value="No">
+                       No
+                    </option>
+                    </select></dd>
+
+                <dt>TIN</dt>
+                <dd><input style = "width:100%;" type = "text" name = "TIN" placeholder = "TIN"></dd> 
+            </dl>
+            </div>  
+        </div>
+        
+
+
+
+        <div class = "col-md-6 nopadding">
+            <div class = "formSeg">
+            
+            <h5 style =  "color:black; " >Signatories</h5>
+            <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+            <dt>Signatory 1</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory1" placeholder = "Signatory 1" ></dd>
+            <dt>Signatory 1 Designation</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory1Designation" placeholder = "Signatory 1 Designation" ></dd>
+            <dt>Signatory 2</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory2" placeholder = "Signatory 2" ></dd>
+            <dt>Signatory 2 Designation</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory2Designation" placeholder = "Signatory 2 Designation" ></dd>
+            <dt>Signatory 3</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory3" placeholder = "Signatory 3" ></dd>
+            <dt>Signatory 3 Designation</dt>
+            <dd><input style = "width:100%;" type = "text" name = "Signatory3Designation" placeholder = "Signatory 3 Designation" ></dd>
+        
+        </div>
+            </div>
+        
+
+
+    </div>
+
+    <div class ="row">
+        <div class = "col-md-6 nopadding">
+            <div class = "formSeg">
+                <dt>Account Address</dt>
+                <hr style="width:100%px; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+                <dt>Building and Street</dt>
+                <dd><input style = "width:100%;" type = "text" name = "accNumberStreet" placeholder = "Building and Street" required></dd>
+                <dt>Barangay</dt>
+                <dd><input style = "width:100%;" type = "text" name = "accBrgy" placeholder = "Barangay" required></dd>
+                <dt>City, Province and or Region</dt>
+                <dd><input style = "width:100%;" type = "text" name = "accCityProvReg" placeholder = "City, Province and or Region" required></dd>
+                <dt>Zip Code</dt>
+                <dd><input style = "width:100%;" type = "text" name = "accZipCode" placeholder = "Zip Code" required></dd>
+            </div>
+            
+        </div>
+
+        
+            <div class = "col-md-6 nopadding">
+                <div class = "formSeg">
+                    <dt>Contact Details</dt>
+                    <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+                    <dt>Contact Person 1</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "ContactPerson1" placeholder = "Contact Person 1" ></dd>
+                    <dt>Contact Person 1 Designation</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "ContactPerson1Designation" placeholder = "Contact Person1 Designation" ></dd>
+                    <dt>Contact Person 1 Phone</dt>
+                    <dd><input style = "width:100%;" type = "input" name = "ContactPerson1Phone" placeholder = "Contact Person 1 Phone" ></dd>
+                    <dt>Contact Person 1 Email</dt>
+                    <dd><input style = "width:100%;" type = "email" name = "ContactPerson1Email" placeholder = "Contact Person 1 Email" ></dd>
+                    <dt>Contact Person 2</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "ContactPerson2" placeholder = "Contact Person 2" ></dd>
+                    <dt>Contact Person 2 Designation</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "ContactPerson2Designation" placeholder = "Contact Person 2 Designation" ></dd>
+                    <dt>Contact Person 2 Phone</dt>
+                    <dd><input style = "width:100%;" type = "input" name = "ContactPerson2Phone" placeholder = "Contact Person 2 Phone" ></dd>
+                    <dt>Contact Person 2 Email</dt>
+                    <dd><input style = "width:100%;" type = "email" name = "ContactPerson2Email" placeholder = "Contact Person 2 Email" ></dd>
+                    <dt>Fax Number 1 </dt>
+                    <dd><input style = "width:100%;" type = "text" name = "FaxNumber1" placeholder = "Fax Number 1" ></dd>
+                    <dt>Fax Number 2</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "FaxNumber2" placeholder = "Fax Number 2" ></dd>
+                </div>
+            </div>
+
+
+    <div class ="row">
+                    
+                        
+                        
+
+            <div class ="row">
+                <div class = "col-md-6 nopadding">
+                    <div class = "formSeg">
+                        <dt>Action Dates</dt>
+                        <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+                        <dt>Plan Type Benefits Summary Receive Dates</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "PlanTypeBenefitsSummaryReceiveDates" placeholder = "MM/DD/YYYY" ></dd>
+            
+                        <dt>Conforme Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "ConformeDate" placeholder = "MM/DD/YYYY"  ></dd>
+                        <dt>Original Effective Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "OriginalEffectiveDate" placeholder = "MM/DD/YYYY" ></dd>
+                        <dt>Effective Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "EffectiveDate" placeholder = "MM/DD/YYYY" ></dd>
+                        <dt>Expiry Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "ExpiryDate" placeholder = "MM/DD/YYYY" ></dd>
+                        <dt>Suspension Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "SuspensionDate" placeholder = "MM/DD/YYYY" ></dd>
+                        <dt>Reactivation Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "ReactivationDate" placeholder = "MM/DD/YYYY" ></dd>
+                        <dt>Termination Extension Date</dt>
+                        <dd><input style = "width:100%;" type = "date" name = "TerminationExtensionDate" placeholder = "MM/DD/YYYY" ></dd>
+                    </div>
+                    
+                </div>
+        
+                
+                    <div class = "col-md-6 nopadding">
+                        <div class = "formSeg">
+                            <dt>Billing Details</dt>
+                            <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+
+                            <dt>Mode of Payment</dt>
+                            <dd><select style = "width:100%"name="ModeofPayment" >
+                                
+                                    <option value1="Semi-Annual">Semi-Annual</option> 
+                                    <option value1="Annual">Annual</option> 
+                                    <option value1="Quarterly">Quarterly</option> 
+                            </select></dd>
+
+                            <dt>Pro-rating of Fees?</dt>
+                            <dd><select style = "width:100%"name="proRatingFee" >
+                                
+                                    <option value1="NA">NA</option> 
+                                    <option value1="Yes">Yes</option> 
+                                    <option value1="No">No</option> 
+                            </select></dd>
+                            <dt>VAT Provision</dt>
+                            <dd><select style = "width:100%"name="VatProvision" >
+                                    <option value1="NA">NA</option> 
+                                    <option value1="Yes">Yes</option> 
+                                    <option value1="No">No</option> 
+                            </select></dd>
+
+                            <dt>Phil Health?</dt>
+                            <dd><select style = "width:100%"name="philHealth" >
+                                
+                                    <option value1="NA">NA</option> 
+                                    <option value1="Yes">Yes</option> 
+                                    <option value1="No">No</option> 
+                            </select></dd>
+
+
+                            <dt>Payee Name</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "payeeName" placeholder = "payeeName" required></dd>
+                            <dt>Billing Building and Street</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "NumberStreet" placeholder = "Billing Building and Street" required></dd>
+                            <dt>Billing Barangay and District</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "BarangayDistrict" placeholder = "Barangay and District" required></dd>
+                            <dt>Billing City Province and Region</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "CityProvinceRegion" placeholder = "Billing City Province and Region" required></dd>
+                            <dt>ZipCode</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "ZipCode" placeholder = "ZipCode" required></dd>
+                            <dt>Billing Addressee</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "BillingAddressee" placeholder = "Billing Addressee" ></dd>
+                            <dt>Billing Addressee Designation</dt>
+                            <dd><input style = "width:100%;" type = "text" name = "BillingAddresseeDesignation" placeholder = "Billing Addressee Designation" ></dd>
+                            
+                        </div>
+                    </div>
+            
+                
+                    
+    </div>
+    <div class ="row">
+                    
+                        
+                        
+
+        <div class ="row">
+            <div class = "col-md-6 nopadding">
+                <div class = "formSeg">
+                    <dt>Other Information</dt>
+                    <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+                    <dt>Initial Number of Employees</dt>
+                    <dd><input style = "width:100%;" type = "input" name = "initialNumberofEmployees" placeholder = "0" ></dd>
+                    <dt>Initial Number of Immediate Dependents</dt>
+                    <dd><input style = "width:100%;" type = "input" name = "initialNumberofImmediateDependents" placeholder = "0" ></dd>
+                    <dt>Initial Number of Extended Dependents</dt>Immediate
+                    <dd><input style = "width:100%;" type = "input" name = "initialNumberofExtendedDependents" placeholder = "0" ></dd>
+                    <dt> With Foreign Employees?                            </dt>
+                    <dd><select>
+                        <option value="1" selected="foreignEmployees">
+                           NA
+                        </option>
+                        <option value="2">
+                           Yes
+                        </option>
+                        <option value="3">
+                           No
+                        </option>
+                        </select></dd>
+                    <dt>Nationalities Positions of Expatriates</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "nationalitiesPositionsofExpatriates" placeholder = "Nationalities Positions of Expatriates" ></dd>
+                    <dt>Company Name on Card</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "companyNameonCard" placeholder = "Company Name on Card" ></dd>
+                    <dt>Remarks</dt>
+                    <dd><input style = "width:100%;" type = "text" name = "remarksInfo" placeholder = "Remarks" ></dd>
+                    
+                </div>
+                
+            </div>
+    
+            
+
+              
+            
+                    
+                
+
+</div>
+
+        </form>
+    
+{% endblock content %}

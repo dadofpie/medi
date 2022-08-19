@@ -1,0 +1,95 @@
+{% extends 'Main.html'%}
+
+{% block content %}
+    <div class="info">
+        <h2>Add Member Form</h2>
+        <form method ="POST" action="" >
+            {% csrf_token %}
+          
+                <dl>
+                   <dt>Account Number & Name *</dt>
+                   <dd><select name="accNumberMem" name = "accNumberMem" required>
+                    {%for las in acc%}
+                        <option value={{las.accNumber}}>{{las.accNumber}}</option>
+                    {%endfor%}
+                     </select></dd>
+                    <dt>Company Name</dt>
+                    <dd><select name="comName" name = "comName" required>
+                        {%for rar in comp%}
+                            <option value={{rar.companyName}}>{{rar.companyName}}</option>
+                        {%endfor%}
+                         </select></dd>
+
+                    <dt>Last Name</dt>
+                    <dd><input  type = "text" name = "lastName" placeholder = "Last Name" ></dd>
+                    <dt>First Name</dt>
+                    <dd><input  type = "text" name = "firstName" placeholder = "First Name" ></dd>
+                    <dt>Middle Name</dt>
+                    <dd><input  type = "text" name = "middleName" placeholder = "Middle Name" ></dd>
+                    <dt>Member Status</dt>
+                    <dd>
+                        <select name="comName" name = "comName" required>
+                        {%for rar in comp%}
+                            <option value={{rar.companyName}}>{{rar.companyName}}</option>
+                        {%endfor%}
+                        </select></dd>
+                    <dt>Member Type</dt>
+                    <dd>
+                        <select name="memType" name = "memType" required>
+                            {%for memty in memtype%}
+                                <option value={{memty.memTypeName}}>{{memty.memTypeName}}</option>
+                            {%endfor%}
+                    </select></dd>
+
+                    <dt>Attached to a Principle Member? This has to be self relational </dt>
+                    <dd>
+                        <select name="attachPrinMember" name = "attachPrinMember" required>
+                            {%for accn in accn%}
+                                <option value={{accn.Member}}>{{accn.Member}}</option>
+                            {%endfor%}
+                    </select></dd>
+
+                    <dt>Relationship to Principle Member? </dt>
+                    <dd>
+                        <select name="relationshipPrinMember" name = "relationshipPrinMember" required>
+                            {%for rel in rela%}
+                                <option value={{rel.relation}}>{{rel.relation}}</option>
+                            {%endfor%}
+                    </select></dd>
+
+                    
+
+
+
+                    <dt>First Name</dt>
+                    <dd><input  type = "text" name = "firstName" placeholder = "First Name" ></dd>
+
+
+
+
+
+
+
+
+                    <dt>date</dt>
+                   <dd><input type="date" name="comName" value="{{form.productionDate}}" required/></table><dd>
+                    <dt>product</dt>
+                    <dd><select name="product" name = "product" required>
+                    {%for las in lis%}
+                        <option value={{las.product}}>{{las.product}}</option>
+                    {%endfor%}
+                     </select></dd>
+                <dt>finCase</dt>
+                <dd><input type="number" name="finCase" value="{{form.finCase}}" min=0 required/></dd>
+                <dt>finBox</dt>
+                <dd><input type="number" name="finBox" value="{{form.finBox}}" min=0 required/></dd>
+                <dt>remarks</dt>
+                <dd><textarea name= "remarks">{{form.remarks}}</textarea></dd>
+            </dl>
+                <input type="submit" style="padding: 2px;"value="submit form" />
+           
+
+        </form>
+    </div>
+   
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'Main.html'%}
+
+{% block content %}
+    <div class="info">
+        <form method ="POST" action="" >
+            {% csrf_token %}
+            {{form.as_p }}
+            <input type="submit" value="Add New Date" />
+        </form>
+    </div>
+   
+{% endblock content %}

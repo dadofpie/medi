@@ -1,0 +1,65 @@
+{% extends 'Main.html'%}
+{% load auth_extras %}
+{% load mathfilters %}
+{%load static%}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+
+    <div>
+        <div class="info">
+            
+            
+            <h2 style="margin-top: 110px; ">Welcome {{ user.username }}</h2>
+        
+            <h3 style="margin-top:20px">Latest Account Added</h3>
+            <hr style="width:1300px;margin-left: 0px; border: 2px solid rgb(16, 10, 10); border-radius:2px;">
+                        
+            <table class="formlist">
+                
+                <tr>
+                    <th>Account No. & Name</th>
+                    <th>Account Status</th>
+                    <th>Company Name </th>
+                    <th>Effective Date </th>
+                    <th>Expiry Date </th>
+                    <th>Days to Expiry </th>
+                    <th>Unpaid Due Date </th>
+                    <th>Plans</th>
+                </tr>
+                <tr> 
+                    <div stye="font-size: 15px;">
+                    <th>{{acc.accNumber}}</th>
+                    
+                    <th>{{acc.accStatus}}</th>
+                    <th>{{acc.companyName}}</th>
+                    <th>{{acc.EffectiveDate}}</th>
+                    <th>{{acc.ExpiryDate}}</th>
+                    {%if acc.date_diff <= 0%}
+                    <th><div style="color:red">{{acc.date_diff}}</div></th>
+                    {%else%}
+                    <th>{{acc.date_diff}}</th>
+                    {%endif%}
+                    <th>0</th>
+                    <th>{{acc.planTypewithDescription}}</th>
+                </div>
+              </tr>
+              
+             
+
+    </div>
+</div>
+
+        
+        </div>
+    </div>
+{% else %}
+<p>You may not access this page without loging in.</p>
+
+{% endif %}
+{% endblock content %}
+
+

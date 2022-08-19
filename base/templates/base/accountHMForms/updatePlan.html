@@ -1,0 +1,107 @@
+{% extends 'Main.html'%}
+
+{% block content %}
+    <div class="info">
+        <h2>Update Plan Type</h2>
+        <form method ="POST" action="" >
+            {% csrf_token %}
+            <h3 style="margin-top:40px">Add Accounts</h3>
+            <hr style="width:100%; border: 2px solid rgb(16, 10, 10); border-radius:2px;">  
+            <button style = "background-color: rgb(40, 40, 228); border-radius: 20px; margin-left: 900px;"> <a style ="text-decoration: none;color: white;" href="{{request.META.HTTP_REFERER|escape}}"> Back
+            </a></button>
+            <button style = "background-color: rgb(12, 131, 5); border-radius: 20px; margin-left: 0px;"> <a style ="text-decoration: none;color: white;" type = "submit", value ="Submit">Save</a>
+            </button>
+            <dt>Plan Type with Description and Pricing</dt>
+                <div class ="row">
+                    <div class = "col-md-6 nopadding">
+                        <div class = "formSeg">
+                            
+                    <dt>1. Plan Type</dt>
+                    <dd>
+                        <select name = "planTypewithDescription1" style="width: 100%;" required>
+                            {%for las in pln%}
+                            <option value={{las.planTypewDescName}}>{{las.planTypewDescName}}</option>
+                            {%endfor%}
+                        </select>
+                    
+                    </dd>
+                    
+                    <dt>2. Plan Type</dt>
+                    <dd>
+                        <select name = "planTypewithDescription2"style="width: 100%;" >
+                            {%for las in pln%}
+                            <option value={{las.planTypewDescName}}>{{las.planTypewDescName}}</option>
+                            {%endfor%}
+                        </select>
+                    
+                    </dd>
+                    <dt>3. Plan Type</dt>
+                    <dd>
+                            <select name = "planTypewithDescription3"style="width: 100%;" >
+                            {%for las in pln%}
+                                <option value={{las.planTypewDescName}}>{{las.planTypewDescName}}</option>
+                            {%endfor%}
+                        </select>
+                    </dd>
+                    <dt>4. Plan Type</dt>
+                    <dd>
+                        <select name = "planTypewithDescription4"style="width: 100%;" >
+                            {%for las in pln%}
+                            <option value={{las.planTypewDescName}}>{{las.planTypewDescName}}</option>
+                            {%endfor%}
+                        </select>
+                    </dd>  
+                    <dt>5. Plan Type</dt>
+                    <dd>
+                        <select name = "planTypewithDescription5"style="width: 100%;" >
+                            {%for las in pln%}
+                            <option value={{las.planTypewDescName}}>{{las.planTypewDescName}}</option>
+                            {%endfor%}
+                        </select>
+                    </dd>
+
+                </div>
+            </div> 
+    
+            <div class = "col-md-6 nopadding">
+                <div class = "formSeg">
+                    
+            <dt>1. Membership Fee</dt>
+            <dd>
+                <dd><input style = "width:100%" type = "input" name = "planMembershipFee1" placeholder = "Membership Fee" required></dd>
+            
+            </dd>
+            
+            <dt>2. Membership Fee</dt>
+            <dd>
+                <dd><input style = "width:100%" type = "input" name = "planMembershipFee1" placeholder = "Membership Fee" required></dd>
+            
+            </dd>
+            <dt>3. Membership Fee</dt>
+            <dd>
+                <dd><input style = "width:100%" type = "input" name = "planMembershipFee1" placeholder = "Membership Fee" required></dd>
+            
+            </dd>
+            <dt>4. Membership Fee</dt>
+            <dd>
+                <dd><input style = "width:100%" type = "input" name = "planMembershipFee1" placeholder = "Membership Fee" required></dd>
+            
+            </dd>  
+            <dt>5
+                
+                
+                . Membership Fee</dt>
+            <dd>
+                <dd><input style = "width:100%" type = "input" name = "planMembershipFee1" placeholder = "Membership Fee" required></dd>
+            
+            </dd>
+
+        </div>
+    </div>
+    
+</div>
+
+
+
+</form>
+{% endblock content %}

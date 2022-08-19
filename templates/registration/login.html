@@ -1,0 +1,54 @@
+{% extends "Base.html" %}
+
+{%load static%}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+  <div class='nav'>
+    <a href="{% url 'home'%}">
+        <h1 class='logo'><em style ="color: black">HM</style> <em style = "color: black">Plus</em></h1>
+    </a>
+</div>
+  <div class="login">
+    <div class="loginItems">
+      <h2>Login</h2>
+    </div>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <table class="loginTable">
+        <tr>
+          <td> Username</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td class="loginTable">Password</td>
+          <td>{{ form.password }}</td>
+        </tr>
+        
+      </table>
+      
+      <input type="submit" value="login" class="button loginbut"/>
+
+
+      <input type="hidden" name="next" value="{{ next }}" />
+            
+    </form>
+
+    
+  </div>
+  
+  {# Assumes You setup the password_reset view in your URLconf #}
+
+
+{% endblock %}

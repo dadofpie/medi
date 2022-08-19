@@ -1,0 +1,22 @@
+<!-- templates/home.html-->
+
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{%static 'style.css'%}">
+  
+
+
+<div class="login">
+  <div class="landingItems">
+    <h2><em>Healthcare Management<em style="color:black"> Plus</em></em></h2>
+    <p>Inventory tracking system</p>
+    <div class="buttSpace">
+      <a href="{% url 'login' %}" class="button landbut">Log In</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
